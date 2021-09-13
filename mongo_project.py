@@ -76,7 +76,23 @@ def add_record():
 
 
 def find_record():
-    doc
+    doc = get_record()
+    if doc:
+        print("")
+        for k,v in doc.items():
+            if k != "_id":
+                print(k.capitalize() + ": " + v.capitalize())
+
+
+def edit_record():
+    doc = get_record()
+    if doc:
+        update_doc = {}
+        print("")
+        for k,v in doc.items():
+            if k != "_id":
+                update_doc[k] = input(k.capitalize() + " [" + v + "] > ")
+
 
 def main_loop():
     while True:
@@ -84,7 +100,7 @@ def main_loop():
         if option == '1':
             add_record()
         elif option == '2':
-            print('You have selected option 2')
+            find_record()
         elif option == '3':
             print('You have selected option 3')
         elif option == '4':
